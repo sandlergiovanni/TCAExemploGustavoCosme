@@ -8,19 +8,17 @@
 import Foundation
 
 struct ApiClient {
-    var apiKey: String
+    var apiKey: String = "1f54bd990f1cdfb230adb312546d765d"
     var session: URLSession = .shared
     private var baseUrl: URL = URL(string: "https://api.themoviedb.org/3/")!
 
-    func fetchData<T: Codable>(page: Int = 1,
-                               path: String,
+    func fetchData<T: Codable>(path: String,
                                extraQueryParams: [URLQueryItem] = [],
-                               language: String? = nil) async -> Result<T?, BaseError> {
+                               language: String? = "pt-BR") async -> Result<T?, BaseError> {
         var components = URLComponents(url: baseUrl.appendingPathComponent(path),
                                        resolvingAgainstBaseURL: false)!
         var queryItems = [
-            URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "page", value: "\(page)")
+            URLQueryItem(name: "api_key", value: apiKey)
         ]
         if extraQueryParams.count > 0 {
             queryItems.append(contentsOf: extraQueryParams)
@@ -37,9 +35,7 @@ struct ApiClient {
             return .failure(BaseError(errorMessage: "Request error", errorCode: URLError.badServerResponse.rawValue))
         }
 
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        guard let result = try? decoder.decode(T.self, from: data) else {
+        guard let result = try? JSONDecoder().decode(T.self, from: data) else {
             return .failure(BaseError(errorMessage: "Failed to decode data", errorCode: 0))
         }
         return .success(result)

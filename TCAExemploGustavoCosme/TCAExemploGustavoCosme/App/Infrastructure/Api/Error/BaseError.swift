@@ -5,7 +5,7 @@
 //  Created by Sandler Maciel on 18/10/25.
 //
 
-struct BaseError: Codable, Error {
+struct BaseError: Codable, Equatable, Error {
     let errorMessage: String
     let errorCode: Int
     

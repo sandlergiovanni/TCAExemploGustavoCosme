@@ -11,7 +11,7 @@ struct Movie: Identifiable, Codable, Equatable {
     let overview: String?
     let posterPath: String?
     let backdropPath: String?
-    let releaseDate: String?
+    // let releaseDate: String?
     let voteAverage: Double?
     let voteCount: Int?
 
@@ -19,7 +19,7 @@ struct Movie: Identifiable, Codable, Equatable {
         case id, title, overview
         case posterPath = "poster_path"
         case backdropPath = "backdrop_path"
-        case releaseDate = "release_date"
+        // case releaseDate = "release_date"
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }

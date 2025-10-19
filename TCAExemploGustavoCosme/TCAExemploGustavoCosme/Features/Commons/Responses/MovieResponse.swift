@@ -5,7 +5,7 @@
 //  Created by Sandler Maciel on 18/10/25.
 //
 
-struct MovieResponse: Codable {
+struct MovieResponse: Codable, Equatable {
     let page: Int
     let results: [Movie]
     let totalPages: Int
