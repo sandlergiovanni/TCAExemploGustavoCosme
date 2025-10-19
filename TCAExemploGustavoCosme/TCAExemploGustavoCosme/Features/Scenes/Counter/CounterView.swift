@@ -1,5 +1,5 @@
 //
-//  Home.swift
+//  CounterView.swift
 //  TCAExemploGustavoCosme
 //
 //  Created by Sandler Maciel on 18/10/25.
@@ -8,7 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct Home: View {
+struct CounterView: View {
     let store: StoreOf<CounterReducer>
 
     var body: some View {
@@ -30,7 +30,7 @@ struct Home: View {
 }
 
 #Preview {
-    Home(
+    CounterView(
         store: Store(
             initialState: CounterReducer.State(),
             reducer: { CounterReducer() }

@@ -12,7 +12,7 @@ import ComposableArchitecture
 struct TCAExemploGustavoCosmeApp: App {
     var body: some Scene {
         WindowGroup {
-            Home(store: Store(
+            CounterView(store: Store(
                 initialState: CounterReducer.State(),
                 reducer: { CounterReducer() }
             ))

@@ -10,13 +10,12 @@ import Foundation
 struct ApiClient {
     var apiKey: String
     var session: URLSession = .shared
-    var baseUrl: URL = URL(string: "https://api.themoviedb.org/3/")!
+    private var baseUrl: URL = URL(string: "https://api.themoviedb.org/3/")!
 
     func fetchData<T: Codable>(page: Int = 1,
-                   path: String,
-                   extraQueryParams: [URLQueryItem] = [],
-                   language: String? = nil) async -> Result<T?, BaseError> {
-        // var components = URLComponents(url: baseUrl.appendingPathComponent("movie/popular"), resolvingAgainstBaseURL: false)!
+                               path: String,
+                               extraQueryParams: [URLQueryItem] = [],
+                               language: String? = nil) async -> Result<T?, BaseError> {
         var components = URLComponents(url: baseUrl.appendingPathComponent(path),
                                        resolvingAgainstBaseURL: false)!
         var queryItems = [
@@ -26,7 +25,6 @@ struct ApiClient {
         if extraQueryParams.count > 0 {
             queryItems.append(contentsOf: extraQueryParams)
         }
-
         if let language = language {
             queryItems.append(URLQueryItem(name: "language", value: language))
         }
