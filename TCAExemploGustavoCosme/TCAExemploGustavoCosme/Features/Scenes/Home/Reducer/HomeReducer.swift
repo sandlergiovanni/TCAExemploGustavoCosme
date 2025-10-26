@@ -15,14 +15,14 @@ struct HomeReducer {
         var movies: [Movie] = []
         var errorMessage: String? = nil
         var isLoading: Bool = false
-        var lastId: Int = 0
+        var hasMorePage: Bool = true
     }
     
     enum Action: Equatable {
         case onAppear
         case moviesLoaded([Movie]?)
         case loadError(BaseError)
-        case loadNextPage
+        case loadNextPageIfNeeded(currentMovie: Movie)
     }
     
     @Dependency(\.movieWorker) var worker
@@ -34,33 +34,42 @@ struct HomeReducer {
                 return .none
             }
             state.isLoading = true
-            let nextPage = state.page + 1
-            return .run { send in
-                let result = await worker.fetchMovies(page: nextPage)
-                switch result {
-                case .success(let movieResult):
-                    await send(.moviesLoaded(movieResult?.results ?? []))
-                case .failure(let error):
-                    await send(.loadError(error))
-                }
-            }
-        case .loadNextPage:
-            if state.isLoading {
+            return loadDataFrom(page: 1)
+        case let .loadNextPageIfNeeded(currentMovie):
+            guard !state.isLoading, state.hasMorePage else {
                 return .none
             }
-            return .send(.onAppear)
+            guard let lastId = state.movies.last?.id,
+                  lastId == currentMovie.id else {
+                return .none
+            }
+            let nextPage = state.page + 1
+            return loadDataFrom(page: nextPage)
         case let .moviesLoaded(movies):
             state.isLoading = false
             if let movies = movies, movies.count > 0 {
                 state.movies.append(contentsOf: movies)
                 state.page += 1
+            } else {
+                state.hasMorePage = false
             }
-            state.lastId = movies?.last?.id ?? 0
             return .none
         case let .loadError(message):
             state.isLoading = false
             state.errorMessage = message.errorMessage
             return .none
+        }
+    }
+
+    private func loadDataFrom(page: Int) -> Effect<Action> {
+        .run { send in
+            let result = await worker.fetchMovies(page: page)
+            switch result {
+            case .success(let movieResult):
+                await send(.moviesLoaded(movieResult?.results ?? []))
+            case .failure(let error):
+                await send(.loadError(error))
+            }
         }
     }
 }

@@ -10,41 +10,36 @@ import ComposableArchitecture
 
 struct HomeView: View {
     var store: StoreOf<HomeReducer>
-
+    
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             NavigationStack {
-                if store.isLoading && store.movies.isEmpty {
-                    ProgressView("Loading...")
-                        .progressViewStyle(CircularProgressViewStyle())
-                } else {
-                    if let error = store.errorMessage {
-                        ErrorPanel(errorMessage: error) {
-                            store.send(.loadNextPage)
-                        }
+                Group {
+                    if viewStore.isLoading && viewStore.movies.isEmpty {
+                        ProgressView("Loading...")
+                            .progressViewStyle(CircularProgressViewStyle())
                     } else {
-                        List(store.movies, id:\.id) { movie in
-                            HStack(spacing: 16) {
-                                PosterImage(url: movie.posterUrlPath ?? "")
-                                
-                                VStack(alignment: .leading, spacing: 8) {
-                                    Text(movie.title)
-                                        .font(.headline)
-                                    Text(movie.overview ?? "-")
-                                        .font(.subheadline)
-                                        .lineLimit(3)
+                        if let error = viewStore.errorMessage {
+                            ErrorPanel(errorMessage: error) {
+                                viewStore.send(.onAppear)
+                            }
+                        } else {
+                            List(viewStore.movies, id:\.id) { movie in
+                                CardLink(movie: movie)
+                                    .onAppear() {
+                                        viewStore.send(.loadNextPageIfNeeded(currentMovie: movie))
+                                    }
+                            }
+                            .overlay(alignment: .bottom) {
+                                if viewStore.isLoading {
+                                    ProgressView()
+                                        .padding()
                                 }
                             }
-                            .padding(.vertical, 8)
-                            .onAppear() {
-                                if store.lastId == movie.id {
-                                    store.send(.loadNextPage)
-                                }
+                            .navigationTitle("Filmes Populares")
+                            .onAppear {
+                                viewStore.send(.onAppear)
                             }
-                        }
-                        .navigationTitle("Filmes Populares")
-                        .onAppear {
-                            store.send(.onAppear)
                         }
                     }
                 }
@@ -53,7 +48,7 @@ struct HomeView: View {
     }
 }
 
-struct ErrorPanel: View {
+fileprivate struct ErrorPanel: View {
     var errorMessage: String
     var tryAgaing: () -> Void
     
@@ -75,7 +70,7 @@ struct ErrorPanel: View {
     }
 }
 
-struct CardLink: View {
+fileprivate struct CardLink: View {
     var movie: Movie
 
     var body: some View {
@@ -94,7 +89,7 @@ struct CardLink: View {
     }
 }
 
-struct PosterImage: View {
+fileprivate struct PosterImage: View {
     var url: String
 
     var body: some View {
