@@ -5,13 +5,14 @@
 //  Created by Sandler Maciel on 18/10/25.
 //
 
+import Foundation
+
 struct Movie: Identifiable, Codable, Equatable {
     let id: Int
     let title: String
     let overview: String?
     let posterPath: String?
     let backdropPath: String?
-    // let releaseDate: String?
     let voteAverage: Double?
     let voteCount: Int?
 
@@ -19,8 +20,12 @@ struct Movie: Identifiable, Codable, Equatable {
         case id, title, overview
         case posterPath = "poster_path"
         case backdropPath = "backdrop_path"
-        // case releaseDate = "release_date"
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
+    }
+
+    var posterUrlPath: String? {
+        guard let path = posterPath else { return nil }
+        return "https://image.tmdb.org/t/p/w500\(path)"
     }
 }

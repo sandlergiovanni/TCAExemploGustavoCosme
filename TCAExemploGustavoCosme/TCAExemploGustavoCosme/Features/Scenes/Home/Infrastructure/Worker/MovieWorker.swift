@@ -14,7 +14,7 @@ struct MovieWorker: MovieWorkerProtocol {
     private var path: String = "movie/popular"
 
     func fetchMovies(page: Int) async -> Result<MovieResponse?, BaseError> {
-        var queryParameters: [URLQueryItem] = [
+        let queryParameters: [URLQueryItem] = [
             URLQueryItem(name: "page", value: "\(page)")
         ]
         let result: MovieResult = await service.fetchData(path: self.path,

@@ -14,36 +14,39 @@ struct HomeView: View {
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             NavigationStack {
-                Group {
-                    if viewStore.isLoading {
-                        ProgressView("Loading...")
-                            .progressViewStyle(CircularProgressViewStyle())
+                if store.isLoading && store.movies.isEmpty {
+                    ProgressView("Loading...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                } else {
+                    if let error = store.errorMessage {
+                        ErrorPanel(errorMessage: error) {
+                            store.send(.loadNextPage)
+                        }
                     } else {
-                        if let error = viewStore.errorMessage {
-                            ErrorPanel(errorMessage: error) {
-                                store.send(.onAppear)
-                            }
-                        } else {
-                            List(viewStore.movies, id:\.id) { movie in
-                                HStack(spacing: 16) {
-                                    PosterImage(url: movie.posterPath ?? "")
-                                    
-                                    VStack(alignment: .leading, spacing: 8) {
-                                        Text(movie.title)
-                                            .font(.headline)
-                                        Text(movie.overview ?? "-")
-                                            .font(.subheadline)
-                                            .lineLimit(3)
-                                    }
+                        List(store.movies, id:\.id) { movie in
+                            HStack(spacing: 16) {
+                                PosterImage(url: movie.posterUrlPath ?? "")
+                                
+                                VStack(alignment: .leading, spacing: 8) {
+                                    Text(movie.title)
+                                        .font(.headline)
+                                    Text(movie.overview ?? "-")
+                                        .font(.subheadline)
+                                        .lineLimit(3)
                                 }
-                                .padding(.vertical, 8)
+                            }
+                            .padding(.vertical, 8)
+                            .onAppear() {
+                                if store.lastId == movie.id {
+                                    store.send(.loadNextPage)
+                                }
                             }
                         }
+                        .navigationTitle("Filmes Populares")
+                        .onAppear {
+                            store.send(.onAppear)
+                        }
                     }
-                }
-                .navigationTitle("Filmes Populares")
-                .onAppear {
-                    viewStore.send(.onAppear)
                 }
             }
         }
@@ -69,6 +72,25 @@ struct ErrorPanel: View {
             .buttonStyle(.borderedProminent)
         }
         .padding()
+    }
+}
+
+struct CardLink: View {
+    var movie: Movie
+
+    var body: some View {
+        HStack(spacing: 16) {
+            PosterImage(url: movie.posterUrlPath ?? "")
+            
+            VStack(alignment: .leading, spacing: 8) {
+                Text(movie.title)
+                    .font(.headline)
+                Text(movie.overview ?? "-")
+                    .font(.subheadline)
+                    .lineLimit(3)
+            }
+        }
+        .padding(.vertical, 8)
     }
 }
 
