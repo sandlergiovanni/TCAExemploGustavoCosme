@@ -16,30 +16,23 @@ struct HomeView: View {
             NavigationStack {
                 Group {
                     if viewStore.isLoading && viewStore.movies.isEmpty {
-                        ProgressView("Loading...")
-                            .progressViewStyle(CircularProgressViewStyle())
+                        ProgressView("Loading...").progressViewStyle(CircularProgressViewStyle())
                     } else {
                         if let error = viewStore.errorMessage {
-                            ErrorPanel(errorMessage: error) {
-                                viewStore.send(.onAppear)
-                            }
+                            ErrorPanel(errorMessage: error) { viewStore.send(.onAppear) }
                         } else {
                             List(viewStore.movies, id:\.id) { movie in
-                                CardLink(movie: movie)
-                                    .onAppear() {
-                                        viewStore.send(.loadNextPageIfNeeded(currentMovie: movie))
-                                    }
+                                CardLink(movie: movie).onAppear() {
+                                    viewStore.send(.loadNextPageIfNeeded(currentMovie: movie))
+                                }
                             }
                             .overlay(alignment: .bottom) {
                                 if viewStore.isLoading {
-                                    ProgressView()
-                                        .padding()
+                                    ProgressView().padding()
                                 }
                             }
                             .navigationTitle("Filmes Populares")
-                            .onAppear {
-                                viewStore.send(.onAppear)
-                            }
+                            .onAppear { viewStore.send(.onAppear) }
                         }
                     }
                 }
@@ -78,8 +71,8 @@ fileprivate struct CardLink: View {
             PosterImage(url: movie.posterUrlPath ?? "")
             
             VStack(alignment: .leading, spacing: 8) {
-                Text(movie.title)
-                    .font(.headline)
+                Text(movie.title).font(.headline)
+                
                 Text(movie.overview ?? "-")
                     .font(.subheadline)
                     .lineLimit(3)
@@ -119,7 +112,7 @@ fileprivate struct PosterImage: View {
 #Preview {
     HomeView(
         store: Store(
-            initialState: HomeReducer.State(),
+            initialState: HomeState(),
             reducer: { HomeReducer() }
         )
     )

@@ -13,7 +13,7 @@ struct TCAExemploGustavoCosmeApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView(store: Store(
-                initialState: HomeReducer.State(),
+                initialState: HomeState(),
                 reducer: { HomeReducer() }
             ))
         }

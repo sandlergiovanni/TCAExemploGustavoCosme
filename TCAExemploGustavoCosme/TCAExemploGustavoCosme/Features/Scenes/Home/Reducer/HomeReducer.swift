@@ -9,25 +9,9 @@ import ComposableArchitecture
 
 @Reducer
 struct HomeReducer {
-    @ObservableState
-    struct State: Equatable {
-        var page: Int = 0
-        var movies: [Movie] = []
-        var errorMessage: String? = nil
-        var isLoading: Bool = false
-        var hasMorePage: Bool = true
-    }
-    
-    enum Action: Equatable {
-        case onAppear
-        case moviesLoaded([Movie]?)
-        case loadError(BaseError)
-        case loadNextPageIfNeeded(currentMovie: Movie)
-    }
-    
     @Dependency(\.movieWorker) var worker
     
-    func reduce(into state: inout State, action: Action) -> Effect<Action> {
+    func reduce(into state: inout HomeState, action: HomeAction) -> Effect<HomeAction> {
         switch action {
         case .onAppear:
             if state.isLoading {
@@ -61,7 +45,7 @@ struct HomeReducer {
         }
     }
 
-    private func loadDataFrom(page: Int) -> Effect<Action> {
+    private func loadDataFrom(page: Int) -> Effect<HomeAction> {
         .run { send in
             let result = await worker.fetchMovies(page: page)
             switch result {
