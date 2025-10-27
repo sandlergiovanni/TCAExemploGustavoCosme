@@ -8,12 +8,10 @@
 import Foundation
 
 struct MovieWorker: MovieWorkerProtocol {
-    typealias MovieResult = Result<MovieResponse?, BaseError>
-
     private var service: ApiClient = ApiClient()
     private var path: String = "movie/popular"
 
-    func fetchMovies(page: Int) async -> Result<MovieResponse?, BaseError> {
+    func fetchMovies(page: Int) async -> MovieResult {
         let queryParameters: [URLQueryItem] = [
             URLQueryItem(name: "page", value: "\(page)")
         ]

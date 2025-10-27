@@ -9,7 +9,7 @@ struct MovieWorkerMock: MovieWorkerProtocol {
     private(set) var result: MovieResponse?
     private(set) var resultError: BaseError?
 
-    func fetchMovies(page: Int) async -> Result<MovieResponse?, BaseError> {
+    func fetchMovies(page: Int) async -> MovieResult {
         if let result {
             return .success(result)
         }

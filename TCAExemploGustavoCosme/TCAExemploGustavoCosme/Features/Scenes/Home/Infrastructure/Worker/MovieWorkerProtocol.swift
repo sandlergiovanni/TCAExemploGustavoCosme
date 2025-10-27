@@ -6,5 +6,7 @@
 //
 
 protocol MovieWorkerProtocol {
-    func fetchMovies(page: Int) async -> Result<MovieResponse?, BaseError>
+    typealias MovieResult = Result<MovieResponse?, BaseError>
+
+    func fetchMovies(page: Int) async -> MovieResult
 }
