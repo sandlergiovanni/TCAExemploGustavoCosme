@@ -42,6 +42,9 @@ struct HomeReducer {
             state.isLoading = false
             state.errorMessage = message.errorMessage
             return .none
+        case let .didSelectMovie(movie):
+            state.selectedMovie = movie
+            return .none
         }
     }
 

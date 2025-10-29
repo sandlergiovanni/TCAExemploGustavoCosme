@@ -3,4 +3,160 @@
    uuid = "F587A661-B036-4800-85EA-F019130C2A0D"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "83031887-1739-47F4-842A-2355BD5FF144"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TCAExemploGustavoCosme/Features/Scenes/Detail/Reducer/DetailReducer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "reduce(into:action:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B6537730-AB24-4549-8B2D-2DAF63135F4D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TCAExemploGustavoCosme/Features/Scenes/Detail/Reducer/DetailReducer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "loadDetails(of:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B6537730-AB24-4549-8B2D-2DAF63135F4D - 144b2a27238894ce"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for closure #1 @Sendable (ComposableArchitecture.Send&lt;TCAExemploGustavoCosme.DetailAction&gt;) async -&gt; () in TCAExemploGustavoCosme.DetailReducer.loadDetails(of: Swift.Int) -&gt; ComposableArchitecture.Effect&lt;TCAExemploGustavoCosme.DetailAction&gt;"
+                  moduleName = "TCAExemploGustavoCosme.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sandlermaciel/Developer/Projetos/TCA/ExemploArtigoGustavoCosme/TCAExemploGustavoCosme/TCAExemploGustavoCosme/Features/Scenes/Detail/Reducer/DetailReducer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39">
+               </Location>
+               <Location
+                  uuid = "B6537730-AB24-4549-8B2D-2DAF63135F4D - 144b2a27238894ce"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for closure #1 @Sendable (ComposableArchitecture.Send&lt;TCAExemploGustavoCosme.DetailAction&gt;) async -&gt; () in TCAExemploGustavoCosme.DetailReducer.loadDetails(of: Swift.Int) -&gt; ComposableArchitecture.Effect&lt;TCAExemploGustavoCosme.DetailAction&gt;"
+                  moduleName = "TCAExemploGustavoCosme.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sandlermaciel/Developer/Projetos/TCA/ExemploArtigoGustavoCosme/TCAExemploGustavoCosme/TCAExemploGustavoCosme/Features/Scenes/Detail/Reducer/DetailReducer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2002A907-5F44-4686-B85C-C1EE3319021D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TCAExemploGustavoCosme/Features/Scenes/Detail/Reducer/DetailReducer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "loadDetails(of:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2002A907-5F44-4686-B85C-C1EE3319021D - 144b2a2723889bb4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for closure #1 @Sendable (ComposableArchitecture.Send&lt;TCAExemploGustavoCosme.DetailAction&gt;) async -&gt; () in TCAExemploGustavoCosme.DetailReducer.loadDetails(of: Swift.Int) -&gt; ComposableArchitecture.Effect&lt;TCAExemploGustavoCosme.DetailAction&gt;"
+                  moduleName = "TCAExemploGustavoCosme.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sandlermaciel/Developer/Projetos/TCA/ExemploArtigoGustavoCosme/TCAExemploGustavoCosme/TCAExemploGustavoCosme/Features/Scenes/Detail/Reducer/DetailReducer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45">
+               </Location>
+               <Location
+                  uuid = "2002A907-5F44-4686-B85C-C1EE3319021D - 78bdd401601b1cde"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(10) suspend resume partial function for closure #1 @Sendable (ComposableArchitecture.Send&lt;TCAExemploGustavoCosme.DetailAction&gt;) async -&gt; () in TCAExemploGustavoCosme.DetailReducer.loadDetails(of: Swift.Int) -&gt; ComposableArchitecture.Effect&lt;TCAExemploGustavoCosme.DetailAction&gt;"
+                  moduleName = "TCAExemploGustavoCosme.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sandlermaciel/Developer/Projetos/TCA/ExemploArtigoGustavoCosme/TCAExemploGustavoCosme/TCAExemploGustavoCosme/Features/Scenes/Detail/Reducer/DetailReducer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45">
+               </Location>
+               <Location
+                  uuid = "2002A907-5F44-4686-B85C-C1EE3319021D - b2dd93efcb22bf9f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(11) suspend resume partial function for closure #1 @Sendable (ComposableArchitecture.Send&lt;TCAExemploGustavoCosme.DetailAction&gt;) async -&gt; () in TCAExemploGustavoCosme.DetailReducer.loadDetails(of: Swift.Int) -&gt; ComposableArchitecture.Effect&lt;TCAExemploGustavoCosme.DetailAction&gt;"
+                  moduleName = "TCAExemploGustavoCosme.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sandlermaciel/Developer/Projetos/TCA/ExemploArtigoGustavoCosme/TCAExemploGustavoCosme/TCAExemploGustavoCosme/Features/Scenes/Detail/Reducer/DetailReducer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C99D0584-D7E3-4C82-8B25-238EBC801A18"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TCAExemploGustavoCosme/Features/Scenes/Detail/Reducer/DetailReducer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "reduce(into:action:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F3E5CB88-2E10-45E2-8FD0-6068731446AB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TCAExemploGustavoCosme/Features/Scenes/Detail/Reducer/DetailReducer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "reduce(into:action:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

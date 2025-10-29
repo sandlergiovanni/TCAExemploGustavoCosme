@@ -14,4 +14,5 @@ struct HomeState: Equatable {
     var errorMessage: String? = nil
     var isLoading: Bool = false
     var hasMorePage: Bool = true
+    var selectedMovie: Movie? = nil
 }

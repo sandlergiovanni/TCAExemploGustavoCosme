@@ -8,7 +8,7 @@
 import Foundation
 
 struct MovieWorker: MovieWorkerProtocol {
-    private var service: ApiClient = ApiClient()
+    private let service: ApiClient = ApiClient()
     private var path: String = "movie/popular"
 
     func fetchMovies(page: Int) async -> MovieResult {
